@@ -1,0 +1,5 @@
+const http = require('node:http');
+
+const testAgent = new http.Agent();
+
+console.log(testAgent);
