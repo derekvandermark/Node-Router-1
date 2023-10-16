@@ -9,22 +9,6 @@ const server = http.createServer((req, res) => {
     res.setHeader('Content-Type', 'text/plain');
     
     router.route(req, res);
-    
-
-    // const url = new URL(req.url, `http://${req.headers.host}`);
-
-    // if (url.pathname === '/gandalf') {
-    //     res.end('Gandalf: YOUUUUU SHALL NOOT... PAAASS!!!');
-    //     return;
-    // }
-
-    // if (url.pathname === '/boromir') {
-    //     res.end('Boromir: One does not simply walk into Mordor.');
-    //     return;
-    // }
-
-    // res.end('Lord of the Rings')
-    
 });
 
 server.listen(port, hostname, () => {

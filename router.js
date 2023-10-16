@@ -9,8 +9,23 @@ class Router {
     }
 
     setRoute = function(method, pathname, callback) {
+        // edge case, the root path
+        if (pathname === '/') {
+            const root = this.paths[method]['/'];
+            // if an array exists here, meaning there is already an array of functions
+            if (Array.isArray(root)) {
+                root.push(callback);
+            } 
+            // otherwise, set the root to an array containing this callback
+            else { 
+                this.paths[method]['/'] = [callback];
+            }
+            return;
+        }
+
         let route = this.paths[method];
         const pathSections = pathname.split('/');
+        pathSections.shift(); // shift since the first character should always be '/', and split() will make the first arr element ''
 
         for (let i = 0; i < pathSections.length; i++) {
             const pathSection = pathSections[i];
@@ -34,10 +49,10 @@ class Router {
     }
 
     route = function(request, response) {
-        
         const url = new URL(request.url, `http://${request.headers.host}`);
         const pathSections = url.pathname.split('/');
-
+        pathSections.shift(); // shift since the first character should always be '/', and split() will make the first arr element ''
+       
         const method = request.method;
         let index = this.paths[method];
 
@@ -61,7 +76,14 @@ class Router {
 
         // pathname is valid if there are no wildcards, potentially valid if there are
         // the indexed object now references an array of functions to execute (middleware or the responding function)
+        // edge case
+        if (url.pathname === '/') {
+            index = this.paths[method]['/'];
+        }
+
         index[0](request, response);
+        
+        
 
     }
 
