@@ -1,0 +1,10 @@
+body {
+    margin: 0px;
+    padding: 0px;
+}
+div.mainContainer {
+    background-color: red;
+}
+h1.title {
+    margin: 0
+}

@@ -1,3 +1,6 @@
+const render = require("../render")
+
 exports.category_home = async (req, res) => {
-    res.end('Lord of the Rings has many categories of beings...\nThey will soon appear here.')
+    const renderedHtml = render('views/categories.pug');
+    res.end(renderedHtml);
 }

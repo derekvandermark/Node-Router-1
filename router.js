@@ -1,4 +1,5 @@
 class Router {
+
     constructor() {
         this.paths = {
             'GET': {},
@@ -6,6 +7,10 @@ class Router {
             'PUT': {},
             'DELETE': {}
         };
+    }
+
+    get = function(pathname, callback) {
+        this.setRoute('GET', pathname, callback);
     }
 
     setRoute = function(method, pathname, callback) {
@@ -55,7 +60,8 @@ class Router {
        
         const method = request.method;
         let index = this.paths[method];
-
+        console.log('url pathname', url.pathname)
+        console.log('pathSections', pathSections)
         for (const section of pathSections) {
             const singleKey = Object.keys(index)[0];
 
@@ -80,13 +86,10 @@ class Router {
         if (url.pathname === '/') {
             index = this.paths[method]['/'];
         }
-
+        console.log('paths', this.paths)
+        console.log('indes', index)
         index[0](request, response);
-        
-        
-
     }
-
 
 }
 
