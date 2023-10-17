@@ -1,12 +1,12 @@
 const router = require("../router");
-const categoriesController = require("../controllers/categoriesController");
-const wizardController = require("../controllers/wizardController");
+const homeController = require("../controllers/homeController");
+const bookController = require("../controllers/booksController");
 
 // home
-router.get('/', categoriesController.category_home);
+router.get('/', homeController.home);
 
-// wizards
-router.get('/wizards', wizardController.wizard_list);
+// books
+router.get('/books', bookController.book_list);
 
 module.exports = router;
 

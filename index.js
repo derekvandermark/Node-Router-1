@@ -9,9 +9,9 @@ const server = http.createServer((req, res) => {
     res.statusCode = 200;
     res.setHeader('Content-Type', 'text/html');
     
-    if (req.url.substring(req.url.length - 4) === '.css') {
+    if (req.url.substring(0, 7) === '/public') {
         res.setHeader('Content-Type', 'text/css');
-        const file = fs.readFileSync('public/stylesheets/categories.css', { encoding: 'utf-8' });
+        const file = fs.readFileSync(req.url.substring(1), { encoding: 'utf-8' });
         res.end(file);
         return;
     }

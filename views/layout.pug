@@ -1,0 +1,28 @@
+doctype html
+html(lang='en')
+    head 
+        title= title 
+        meta(charset='utf-8')
+        meta(name='viewport', content='width=device-width, initisal-scale=1')
+        link(rel="stylesheet", href="public/stylesheets/categories.css")
+    body 
+        div(class='wrapper')
+            div(class='header')
+                h1(class='title') Lord of the Rings
+            div(class='main-container')
+                div(class='sidebar')
+                    ul(class='sidebar-nav')
+                        li
+                            a(href='/books') Books
+                        li
+                            a(href='/movies') Movies
+                        li
+                            a(href='/characters') Characters
+                        li
+                            a(href='/weapons') Weapons
+                        li
+                            a(href='/locations') Locations
+                div(class='content-container') 
+                    block content
+            div(class='footer')
+                h4(class='footer-text') By Derek van der Mark

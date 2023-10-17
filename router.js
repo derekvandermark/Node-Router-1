@@ -87,7 +87,7 @@ class Router {
             index = this.paths[method]['/'];
         }
         console.log('paths', this.paths)
-        console.log('indes', index)
+        console.log('index', index)
         index[0](request, response);
     }
 
